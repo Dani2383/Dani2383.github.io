@@ -20,7 +20,7 @@ render();
 function init() {
     // Instanciar el motor
     renderer = new THREE.WebGLRenderer();
-    console.log("Hol3a");
+    console.log("Hol4a");
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -30,7 +30,7 @@ function init() {
 
     //Instanciar la camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100);
-    camera.position.set(0, 0, 50);
+    camera.position.set(0, 5, 10);
     camera.lookAt(0,1,0);
 }
 
