@@ -40,6 +40,7 @@ function loadScene() {
     const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10, 10, 10, 10), material);
     suelo.rotation.x = -Math.PI/2;
     scene.add(suelo);
+    suelo.position.y = -0.2;
 
     //Cubo y esfera
     const cubo = new THREE.Mesh(new THREE.BoxGeometry(2,2,2), material);
@@ -48,6 +49,7 @@ function loadScene() {
     esferaCubo = new Three.Object3D();
     esferaCubo.add(cubo);
     esferaCubo.add(esfera);
+    scene.add(esferaCubo);
 
     cubo.position.x = -1;
     esfera.position.x = 1;
