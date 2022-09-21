@@ -20,6 +20,7 @@ renderer();
 function init() {
     // Instanciar el motor
     renderer = new THREE.WebGLRenderer();
+    console.log("Hola");
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
