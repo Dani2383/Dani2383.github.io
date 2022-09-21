@@ -15,7 +15,7 @@ let angulo = 0;
 // Acciones
 init();
 loadScene();
-render();
+renderer();
 
 function init() {
     // Instanciar el motor
@@ -54,6 +54,17 @@ function loadScene() {
     cubo.position.x = -1;
     esfera.position.x = 1;
     esferaCubo.position.y = 1.5;
+
+    //Modelo importado en formato GLTF
+    // const glloader = new GLTFLoader();
+    // glloader.load('models/RobotExpressive.glb', function(gltf){
+    //     gltf.scene.position.y = 1;
+    //     gltf.scene.rotation.y = -Math.PI/2;
+    //     esfera.add(gltf.scene);
+    //     console.log('ROBOT');
+    //     console.log(gltf);
+    // });
+
     scene.add(new THREE.AxesHelper(3));
 }
 
