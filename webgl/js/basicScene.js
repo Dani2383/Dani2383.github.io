@@ -40,6 +40,19 @@ function loadScene() {
     const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10, 10, 10, 10), material);
     suelo.rotation.x = -Math.PI/2;
     scene.add(suelo);
+
+    //Cubo y esfera
+    const cubo = new THREE.Mesh(new THREE.BoxGeometry(2,2,2), material);
+    const esfera = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 20), material);
+
+    esferaCubo = new Three.Object3D();
+    esferaCubo.add(cubo);
+    esferaCubo.add(esfera);
+
+    cubo.position.x = -1;
+    esfera.position.x = 1;
+    esferaCubo.position.y = 1.5;
+    scene.add(new THREE.AxesHelper(3));
 }
 
 function render() {
