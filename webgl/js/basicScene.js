@@ -15,7 +15,7 @@ let angulo = 0;
 // Acciones
 init();
 loadScene();
-renderer();
+render();
 
 function init() {
     // Instanciar el motor
@@ -35,4 +35,14 @@ function init() {
 
 function loadScene() {
     const material = new THREE.MeshBasicMaterial( { color: 'yellow', wireframe: true});
+
+    //Suelo
+    const suelo = new THREE.Mesh( new THREE.PlaneGeometry(10, 10, 10, 10), material);
+    suelo.rotation.x = -Math.PI/2;
+    scene.add(suelo);
+}
+
+function render() {
+    requestAnimationFrame(render);
+    renderer.render(scene, camera);
 }
