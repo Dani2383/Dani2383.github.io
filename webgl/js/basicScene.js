@@ -15,7 +15,7 @@ let angulo = 0;
 // Acciones
 init();
 loadScene();
-renderer();
+render();
 
 function init() {
     // Instanciar el motor

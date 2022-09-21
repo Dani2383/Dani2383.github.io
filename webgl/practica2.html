@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- Pagina de carga de una aplicacion basica en threeJS -->
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Aplicación basica threeJS</title>
+        <style>
+            body{
+                background-color: white;
+                margin: 0px;
+                overflow: hidden;
+            }
+            #info {
+                position: absolute;
+                bottom: 0px;
+                left: 50px;
+                width: 30%;
+                text-align: left;
+                z-index: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="info">
+            <h2>ThreeJS Example</h2>
+        </div>
+        <script type="importmap">
+            {
+                "imports": { "three": "./lib/three.module.js" }
+            }
+        </script>
+        <script type="module" src="js/pract2.js"></script>
+    </body>
+</html>
