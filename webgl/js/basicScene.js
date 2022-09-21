@@ -57,7 +57,12 @@ function loadScene() {
     scene.add(new THREE.AxesHelper(3));
 }
 
+function update(){
+    angulo += 0.01;
+    esferaCubo.rotation.y = angulo;
+}
 function render() {
     requestAnimationFrame(render);
+    update();
     renderer.render(scene, camera);
 }
