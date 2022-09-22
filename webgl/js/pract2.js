@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola9');
+    console.log('Hola10');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -28,6 +28,7 @@ function init(){
 function loadScene() {
     const matRobot = new Three.MeshBasicMaterial({ color: 'red', wireframe: true });
     const matSuelo = new Three.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    const matPinza = new Three.MeshBasicMaterial({ color: 'blue', wireframe: true});
 
     //suelo
     const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 50, 50), matSuelo);
@@ -88,11 +89,16 @@ function loadScene() {
     const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
     palma.rotation.x = Math.PI/2;
 
-    //const pinza1
+    const pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
+    const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
+    pinza1.position.z = -10;
+    pinza2.position.z = 10;
 
 
 
     mano.add(palma);
+    mano.add(pinza1);
+    mano.add(pinza2);
     mano.position.y = 80;
 
     antebrazo.add(disco);
