@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola10');
+    console.log('Hola11');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -93,6 +93,8 @@ function loadScene() {
     const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
     pinza1.position.z = -10;
     pinza2.position.z = 10;
+    pinza1.position.x = 10;
+    pinza2.position.x = 10;
 
 
 
