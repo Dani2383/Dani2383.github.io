@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola4');
+    console.log('Hola5');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -21,7 +21,7 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(90, 100, 250);
+    camera.position.set(90, 150, 250);
     camera.lookAt(0,50,0);
 }
 
@@ -46,6 +46,7 @@ function loadScene() {
     // Brazo:
 
     const brazo = new Three.Object3D();
+
     const eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10), matRobot);
     eje.rotation.x = Math.PI/2;
 
@@ -55,9 +56,44 @@ function loadScene() {
     const rotula = new Three.Mesh(new Three.SphereGeometry(20, 15, 15), matRobot);
     rotula.position.y = 120;
 
+    //Antebrazo:
+
+    const antebrazo = new Three.Object3D();
+
+    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 10, 10), matRobot);
+    const nervios = new Three.Object3D();
+
+    const nervio1 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
+    nervio1.position.x = 5;
+    nervio1.position.z = 5;
+    const nervio2 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
+    nervio2.position.x = -5;
+    nervio2.position.z = 5;
+    const nervio3 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
+    nervio3.position.x = 5;
+    nervio3.position.z = -5;
+    const nervio4 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
+    nervio4.position.x = -5;
+    nervio4.position.z = -5;
+
+    nervios.add(nervio1);
+    nervios.add(nervio2);
+    nervios.add(nervio3);
+    nervios.add(nervio4);
+    nervios.position.y = 3;
+
+
+
+
+    antebrazo.add(disco);
+    antebrazo.add(nervios);
+
+    antebrazo.position.y = 120;
+
     brazo.add(eje);
     brazo.add(esparrago);
     brazo.add(rotula);
+    brazo.add(antebrazo);
 
 
     base.add(brazo);
