@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola3');
+    console.log('Hola4');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -21,8 +21,8 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(90, 200, 350);
-    camera.lookAt(new Three.Vector3(0, 0, 0));
+    camera.position.set(90, 100, 250);
+    camera.lookAt(0,50,0);
 }
 
 function loadScene() {
@@ -50,7 +50,7 @@ function loadScene() {
     eje.rotation.x = Math.PI/2;
 
     const esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
-    esparrago.position.y = 20;
+    esparrago.position.y = 60;
 
     const rotula = new Three.Mesh(new Three.SphereGeometry(20, 15, 15), matRobot);
     rotula.position.y = 120;
