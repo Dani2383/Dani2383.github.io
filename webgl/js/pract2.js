@@ -20,9 +20,9 @@ function init(){
     scene = new Three.Scene();
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(90, 200, 350);
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    camera.lookAt(new Three.Vector3(0, 0, 0));
 }
 
 function loadScene() {
@@ -36,7 +36,7 @@ function loadScene() {
     scene.add(suelo);
     suelo.position.y = -0.2;
 
-    scene.add(new THREE.AxesHelper(3));
+    scene.add(new Three.AxesHelper(3));
 }
 
 function render() {
