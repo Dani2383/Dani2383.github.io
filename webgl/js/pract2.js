@@ -43,7 +43,16 @@ function loadScene() {
     //Base del robot:
     const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 20, 20), matRobot);
 
+    // Brazo:
 
+    const brazo = new Three.Object3D();
+    const eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10));
+    eje.rotation.x = Math.PI/2;
+    
+    brazo.add(eje);
+
+
+    base.add(brazo);
     robot.add(base);
     scene.add(robot);
     scene.add(new Three.AxesHelper(3));
