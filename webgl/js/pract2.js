@@ -21,7 +21,7 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(150, 250, 250);
+    camera.position.set(100, 150, 150);
     camera.lookAt(0,50,0);
 }
 
