@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola11');
+    console.log('Hola12');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -21,7 +21,7 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(100, 150, 150);
+    camera.position.set(150, 150, 200);
     camera.lookAt(0,50,0);
 }
 
@@ -31,7 +31,7 @@ function loadScene() {
     const matPinza = new Three.MeshBasicMaterial({ color: 'blue', wireframe: true});
 
     //suelo
-    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 20, 20), matSuelo);
+    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 10, 10), matSuelo);
     suelo.rotation.x = -Math.PI/2;
     scene.add(suelo);
     suelo.position.y = -0.2;
@@ -42,7 +42,7 @@ function loadScene() {
     robot.position.y = 1;
 
     //Base del robot:
-    const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 20, 20), matRobot);
+    const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 10, 10), matRobot);
 
     // Brazo:
 
@@ -54,7 +54,7 @@ function loadScene() {
     const esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
     esparrago.position.y = 60;
 
-    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 15, 15), matRobot);
+    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 5, 5), matRobot);
     rotula.position.y = 120;
 
     //Antebrazo:
@@ -96,7 +96,10 @@ function loadScene() {
     pinza1.position.x = 10;
     pinza2.position.x = 10;
 
+    //Malla personalizada:
 
+    const malla = new Three.BufferGeometry();
+    const coord = [];
 
     mano.add(palma);
     mano.add(pinza1);
