@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola7');
+    console.log('Hola8');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -21,7 +21,7 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(90, 150, 250);
+    camera.position.set(150, 200, 250);
     camera.lookAt(0,50,0);
 }
 
@@ -30,7 +30,7 @@ function loadScene() {
     const matSuelo = new Three.MeshBasicMaterial({ color: 'yellow', wireframe: true });
 
     //suelo
-    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 100, 100), matSuelo);
+    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 50, 50), matSuelo);
     suelo.rotation.x = -Math.PI/2;
     scene.add(suelo);
     suelo.position.y = -0.2;
