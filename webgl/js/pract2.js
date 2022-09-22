@@ -31,7 +31,7 @@ function loadScene() {
     const matPinza = new Three.MeshBasicMaterial({ color: 'blue', wireframe: true});
 
     //suelo
-    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 50, 50), matSuelo);
+    const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 20, 20), matSuelo);
     suelo.rotation.x = -Math.PI/2;
     scene.add(suelo);
     suelo.position.y = -0.2;
