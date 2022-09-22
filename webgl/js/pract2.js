@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola8');
+    console.log('Hola9');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -88,6 +88,8 @@ function loadScene() {
     const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
     palma.rotation.x = Math.PI/2;
 
+    //const pinza1
+
 
 
     mano.add(palma);
@@ -108,7 +110,8 @@ function loadScene() {
     base.add(brazo);
     robot.add(base);
     scene.add(robot);
-    scene.add(new Three.AxesHelper(3));
+
+    scene.add(new Three.AxesHelper(20));
 }
 
 function render() {
