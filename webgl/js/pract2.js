@@ -9,7 +9,7 @@ let renderer, scene, camera;
 //Acciones
 init();
 loadScene();
-renderer();
+render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
