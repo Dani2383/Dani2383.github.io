@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola2');
+    console.log('Hola3');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -46,10 +46,18 @@ function loadScene() {
     // Brazo:
 
     const brazo = new Three.Object3D();
-    const eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10));
+    const eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10), matRobot);
     eje.rotation.x = Math.PI/2;
-    
+
+    const esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
+    esparrago.position.y = 20;
+
+    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 15, 15), matRobot);
+    rotula.position.y = 120;
+
     brazo.add(eje);
+    brazo.add(esparrago);
+    brazo.add(rotula);
 
 
     base.add(brazo);
