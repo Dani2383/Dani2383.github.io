@@ -60,7 +60,7 @@ function loadScene() {
 
     const antebrazo = new Three.Object3D();
 
-    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 10, 10), matRobot);
+    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 5, 5), matRobot);
     const nervios = new Three.Object3D();
 
     const nervio1 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
@@ -85,7 +85,7 @@ function loadScene() {
     //Mano:
 
     const mano = new Three.Object3D();
-    const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 10), matRobot);
+    const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
     palma.rotation.x = Math.PI/2;
 
 
