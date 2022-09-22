@@ -93,8 +93,8 @@ function loadScene() {
     const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
     pinza1.position.z = -10;
     pinza2.position.z = 10;
-    pinza1.position.x = 10;
-    pinza2.position.x = 10;
+    pinza1.position.x = 13;
+    pinza2.position.x = 13;
 
     //Malla personalizada:
 
