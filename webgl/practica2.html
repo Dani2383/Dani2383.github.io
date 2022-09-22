@@ -11,26 +11,12 @@
                 margin: 0px;
                 overflow: hidden;
             }
-            #info {
-                position: absolute;
-                bottom: 0px;
-                left: 50px;
-                width: 30%;
-                text-align: left;
-                z-index: 1px;
-            }
         </style>
     </head>
     <body>
         <div id="container"></div>
-        <div id="info">
-            <h2>ThreeJS Example</h2>
-        </div>
-        <script type="importmap">
-            {
-                "imports": { "three": "./lib/three.module.js" }
-            }
-        </script>
-        <script type="module" src="js/pract2.js"></script>
+        <script src="lib/three.min_r140.js"></script>
+		<script src="lib/OrbitControls.js"></script>
+        <script src="js/pract2.js"></script>
     </body>
 </html>
