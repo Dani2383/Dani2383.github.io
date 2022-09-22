@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola13');
+    console.log('Hola14');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -99,11 +99,24 @@ function loadScene() {
     //Malla personalizada:
 
     const malla = new Three.BufferGeometry();
-    const coord = [];
+    const coord = [23,10,12, 23,10,8, 42,6,8, 42,6,10,
+                    23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];
+    const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
+                    0,1,0, 0,1,1, 0,0,1, 0,0,0];
+    const indices = [0,1,2, 1,2,3, 0,1,4, 1,4,5,
+                    4,5,6, 5,6,7, 2,3,6, 3,6,7,
+                    1,2,4, 2,4,7, 0,3,5, 3,5,6];
+    malla.setIndex(indices);
+    malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
+    malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
+    const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
+    const dedo1 = new Three.Mesh(malla, matDedos);
+
 
     mano.add(palma);
     mano.add(pinza1);
     mano.add(pinza2);
+    mano.add(dedo1);
     mano.position.y = 80;
 
     antebrazo.add(disco);
