@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola5');
+    console.log('Hola6');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -82,11 +82,20 @@ function loadScene() {
     nervios.add(nervio4);
     nervios.position.y = 3;
 
+    //Mano:
+
+    const mano = new Three.Object3D();
+    const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 10), matRobot);
+    palma.rotation.x = Math.PI/2;
 
 
+
+    mano.add(palma);
+    mano.position.y = 80;
 
     antebrazo.add(disco);
     antebrazo.add(nervios);
+    antebrazo.add(mano);
 
     antebrazo.position.y = 120;
 
