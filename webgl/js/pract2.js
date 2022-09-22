@@ -80,7 +80,7 @@ function loadScene() {
     nervios.add(nervio2);
     nervios.add(nervio3);
     nervios.add(nervio4);
-    //nervios.position.y = 3;
+    nervios.position.y = 43;
 
     //Mano:
 
