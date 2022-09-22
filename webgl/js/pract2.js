@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola6');
+    console.log('Hola7');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -80,7 +80,7 @@ function loadScene() {
     nervios.add(nervio2);
     nervios.add(nervio3);
     nervios.add(nervio4);
-    nervios.position.y = 3;
+    //nervios.position.y = 3;
 
     //Mano:
 
