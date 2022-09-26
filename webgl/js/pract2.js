@@ -118,7 +118,7 @@ function loadScene() {
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
     const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5,
-                    5,4,6, 6,5,7, 2,3,6, 2,6,7,
+                    5,4,7, 6,5,7, 2,3,6, 2,6,7,
                     1,2,4, 2,7,4, 0,5,3, 3,5,6];
     malla.setIndex(indices);
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
