@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola18');
+    console.log('Hola19');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -113,9 +113,9 @@ function loadScene() {
                     23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
-    const indices = [0,1,2, 2,3,0, 1,0,4, 1,4,5,
+    const indices = [1,0,3, 0,3,2, 1,0,4, 1,4,5,
                     4,5,6, 5,6,7, 2,3,6, 3,6,7,
-                    1,2,4, 2,4,7, 0,5,3, 3,5,6];
+                    1,2,4, 2,7,4, 0,5,3, 3,5,6];
     malla.setIndex(indices);
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
