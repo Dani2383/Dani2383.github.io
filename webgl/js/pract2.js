@@ -27,12 +27,12 @@ function init(){
     // camera.lookAt(0,150,0);
 
     // Camara planta --> 
-    camera.position.set(0, 250, 0);
-    camera.lookAt(0,0,0);
+    // camera.position.set(0, 250, 0);
+    // camera.lookAt(0,0,0);
 
     //Camara frontal --> 
-    //camera.position.set(200, 150, 0);
-    //camera.lookAt(0,150,0);
+    camera.position.set(200, 150, 0);
+    camera.lookAt(0,150,0);
 }
 
 function loadScene() {
