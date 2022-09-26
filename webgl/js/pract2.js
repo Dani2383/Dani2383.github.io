@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola15');
+    console.log('Hola16');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -21,8 +21,18 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    
+    //Camara lateral --> 
     camera.position.set(0, 150, 200);
     camera.lookAt(0,150,0);
+
+    // Camara planta --> 
+    // camera.position.set(0, 200, 0);
+    // camera.lookAt(0,0,0);
+
+    //Camara frontal --> 
+    //camera.position.set(200, 150, 0);
+    //camera.lookAt(0,150,0);
 }
 
 function loadScene() {
@@ -105,18 +115,18 @@ function loadScene() {
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
     const indices = [0,1,2, 1,2,3, 0,1,4, 1,4,5,
                     4,5,6, 5,6,7, 2,3,6, 3,6,7,
-                    1,2,4, 2,4,7, 0,3,5, 3,5,6];
+                    1,2,4, 2,4,7, 0,5,3, 3,5,6];
     malla.setIndex(indices);
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
-    const dedo1 = new Three.Mesh(malla, matDedos);
+    const dedo2 = new Three.Mesh(malla, matDedos);
 
 
     mano.add(palma);
     mano.add(pinza1);
     mano.add(pinza2);
-    mano.add(dedo1);
+    mano.add(dedo2);
     mano.position.y = 80;
 
     antebrazo.add(disco);
