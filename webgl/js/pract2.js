@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola16');
+    console.log('Hola18');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -23,12 +23,12 @@ function init(){
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     
     //Camara lateral --> 
-    camera.position.set(0, 150, 200);
-    camera.lookAt(0,150,0);
+    // camera.position.set(0, 150, 200);
+    // camera.lookAt(0,150,0);
 
     // Camara planta --> 
-    // camera.position.set(0, 200, 0);
-    // camera.lookAt(0,0,0);
+    camera.position.set(0, 200, 0);
+    camera.lookAt(0,0,0);
 
     //Camara frontal --> 
     //camera.position.set(200, 150, 0);
@@ -113,7 +113,7 @@ function loadScene() {
                     23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
-    const indices = [0,1,2, 1,2,3, 0,1,4, 1,4,5,
+    const indices = [0,1,2, 2,3,0, 1,0,4, 1,4,5,
                     4,5,6, 5,6,7, 2,3,6, 3,6,7,
                     1,2,4, 2,4,7, 0,5,3, 3,5,6];
     malla.setIndex(indices);
