@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola2');
+    console.log('Hola3');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -31,7 +31,7 @@ function init(){
     // camera.lookAt(0,0,0);
 
     //Camara frontal --> 
-    camera.position.set(200, 200, 0);
+    camera.position.set(150, 200, 0);
     camera.lookAt(0,200,0);
 }
 
