@@ -31,12 +31,12 @@ function init(){
     // camera.lookAt(0,0,0);
 
     //Camara frontal --> 
-    //camera.position.set(150, 200, 0);
-    //camera.lookAt(0,200,0);
+    camera.position.set(150, 200, 0);
+    camera.lookAt(0,200,0);
 
     // Camara inferior --> 
-     camera.position.set(13, 150, 0);
-     camera.lookAt(13,200,0);
+    //  camera.position.set(13, 150, 0);
+    //  camera.lookAt(13,200,0);
 }
 
 function loadScene() {
@@ -107,8 +107,8 @@ function loadScene() {
     const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
     pinza1.position.z = -10;
     pinza2.position.z = 10;
-    pinza1.position.x = 13;
-    pinza2.position.x = 13;
+    pinza1.position.x = 14;
+    pinza2.position.x = 14;
 
     //Malla personalizada:
 
