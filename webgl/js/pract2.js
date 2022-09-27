@@ -22,7 +22,7 @@ function init(){
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     
     //Camara lateral --> 
-    camera.position.set(0, 90, 200);
+    camera.position.set(50, 90, 200);
     camera.lookAt(0,100,0);
 
     // Camara planta --> 
