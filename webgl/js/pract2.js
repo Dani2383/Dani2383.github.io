@@ -13,7 +13,6 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('HolaFinal'); 
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
