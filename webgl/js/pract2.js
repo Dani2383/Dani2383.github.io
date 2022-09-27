@@ -68,14 +68,14 @@ function loadScene() {
     const esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
     esparrago.position.y = 60;
 
-    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 5, 5), matRobot);
+    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 10, 10), matRobot);
     rotula.position.y = 120;
 
     //Antebrazo:
 
     const antebrazo = new Three.Object3D();
 
-    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 5, 5), matRobot);
+    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 10, 10), matRobot);
     const nervios = new Three.Object3D();
 
     const nervio1 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
