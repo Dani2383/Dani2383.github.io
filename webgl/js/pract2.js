@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola13'); 
+    console.log('HolaFinal'); 
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -122,8 +122,8 @@ function loadScene() {
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
     
-    const normals = [0,1,0, 0,1,0, -1,0,0, -1,0,0, // Top (mal) back
-                    0,-1,0, 0,-1,0, 1,0,0, 1,0,0, //Bot (mal) front
+    const normals = [0,1,-2, 0,1,-2, -1,0,0, -1,0,0, // Top back
+                    0,-1,-2, 0,-1,-2, 1,0,0, 1,0,0, //Bot front
                     0,0,-1, 0,0,-1, 0,0,1, 0,0,1]; //Left right
 
     const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5, // Top, Back
