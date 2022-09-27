@@ -5,7 +5,7 @@ import * as Three from "../lib/three.module.js";
 let renderer, scene, camera;
 
 // Variables globales
-let robot, angulo;
+let robot, angulo = 0;
 //Acciones
 init();
 loadScene();
@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola7');
+    console.log('Hola8');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
