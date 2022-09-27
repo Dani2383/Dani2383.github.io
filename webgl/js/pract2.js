@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola11');
+    console.log('Hola12');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -23,7 +23,7 @@ function init(){
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     
     //Camara lateral --> 
-    camera.position.set(0, 120, 200);
+    camera.position.set(0, 90, 200);
     camera.lookAt(0,150,0);
 
     // Camara planta --> 
