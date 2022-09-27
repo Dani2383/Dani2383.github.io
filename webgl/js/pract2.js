@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola6');
+    console.log('Hola7');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -125,12 +125,16 @@ function loadScene() {
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
     const dedo2 = new Three.Mesh(malla, matDedos);
+    const dedo1 = new Three.Mesh(malla, matDedos);
+    dedo1.rotation.y = Math.PI/2;
+    dedo1.position.x -= 20; 
 
 
     mano.add(palma);
     mano.add(pinza1);
     mano.add(pinza2);
     mano.add(dedo2);
+    mano.add(dedo1);
     mano.position.y = 80;
 
     antebrazo.add(disco);
