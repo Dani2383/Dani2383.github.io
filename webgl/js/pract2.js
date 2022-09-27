@@ -37,6 +37,8 @@ function init(){
     // Camara inferior --> 
     //  camera.position.set(13, 150, 0);
     //  camera.lookAt(13,200,0);
+
+    window.addEventListener('resize', updateAspectRatio );
 }
 
 function loadScene() {
@@ -173,4 +175,11 @@ function render() {
 function update() {
     angulo += 0.005;
     robot.rotation.y = angulo;
+}
+
+function updateAspectRatio()
+{
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
 }
