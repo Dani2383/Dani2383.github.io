@@ -5,7 +5,7 @@ import * as Three from "../lib/three.module.js";
 let renderer, scene, camera;
 
 // Variables globales
-let robot;
+let robot, angulo;
 //Acciones
 init();
 loadScene();
@@ -154,5 +154,11 @@ function loadScene() {
 
 function render() {
     requestAnimationFrame( render );
+    update();
     renderer.render(scene, camera);
+}
+
+function update() {
+    angulo += 0.01;
+    robot.rotation.y = angulo;
 }
