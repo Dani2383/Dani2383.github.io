@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola12');
+    console.log('Hola12'); 
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -24,7 +24,7 @@ function init(){
     
     //Camara lateral --> 
     camera.position.set(0, 90, 200);
-    camera.lookAt(0,150,0);
+    camera.lookAt(0,100,0);
 
     // Camara planta --> 
     // camera.position.set(0, 250, 0);
@@ -113,16 +113,24 @@ function loadScene() {
     //Malla personalizada:
 
     const malla = new Three.BufferGeometry();
+
     const coord = [23,10,12, 23,10,8, 42,6,8, 42,6,10,
                     23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];
+
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
-    const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5,
-                    5,4,7, 6,5,7, 2,3,6, 2,6,7,
-                    1,2,4, 2,7,4, 0,5,3, 3,5,6];
+    
+    const normals = [0,1,0, 0,1,0, -1,0,0, -1,0,0, // Top (mal) back
+                    0,-1,0, 0,-1,0, 1,0,0, 1,0,0, //Bot (mal) front
+                    0,0,-1, 0,0,-1, 0,0,1, 0,0,1]; //Left right
+
+    const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5, // Top, Back
+                    5,4,7, 6,5,7, 2,3,6, 2,6,7, // Bot, Front
+                    1,2,4, 2,7,4, 0,5,3, 3,5,6]; // Left, Right
     malla.setIndex(indices);
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
+    malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
     const dedo2 = new Three.Mesh(malla, matRobot);
     const dedo1 = new Three.Mesh(malla, matRobot);
