@@ -58,7 +58,7 @@ function loadScene() {
     robot.position.y = 1;
 
     //Base del robot:
-    const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 10, 10), matRobot);
+    const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 20, 10), matRobot);
 
     // Brazo:
 
@@ -137,7 +137,6 @@ function loadScene() {
     const dedo2 = new Three.Mesh(malla, matRobot);
     const dedo1 = new Three.Mesh(malla, matRobot);
     dedo1.rotation.x = Math.PI;
-    //dedo1.position.z -= 20; 
 
 
     mano.add(palma);
@@ -163,12 +162,11 @@ function loadScene() {
     robot.add(base);
     scene.add(robot);
 
-    scene.add(new Three.AxesHelper(20));
 }
 
 function render() {
     requestAnimationFrame( render );
-    update();
+    //update();
     renderer.render(scene, camera);
 }
 
