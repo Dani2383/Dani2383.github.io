@@ -126,8 +126,8 @@ function loadScene() {
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
     const dedo2 = new Three.Mesh(malla, matDedos);
     const dedo1 = new Three.Mesh(malla, matDedos);
-    dedo1.rotation.y = Math.PI/2;
     dedo1.position.x -= 20; 
+    dedo1.rotation.x = Math.PI/2;
 
 
     mano.add(palma);
@@ -163,6 +163,6 @@ function render() {
 }
 
 function update() {
-    angulo += 0.01;
+    angulo += 0.005;
     robot.rotation.y = angulo;
 }
