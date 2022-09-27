@@ -44,7 +44,6 @@ function init(){
 function loadScene() {
     const matRobot = new Three.MeshBasicMaterial({ color: 'red', wireframe: true });
     const matSuelo = new Three.MeshBasicMaterial({ color: 'yellow', wireframe: true });
-    const matPinza = new Three.MeshBasicMaterial({ color: 'blue', wireframe: true});
 
     //suelo
     const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 10, 10), matSuelo);
@@ -133,7 +132,6 @@ function loadScene() {
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
-    const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
     const dedo2 = new Three.Mesh(malla, matRobot);
     const dedo1 = new Three.Mesh(malla, matRobot);
     dedo1.rotation.x = Math.PI;
@@ -142,8 +140,8 @@ function loadScene() {
     mano.add(palma);
     mano.add(pinza1);
     mano.add(pinza2);
-    mano.add(dedo2);
     mano.add(dedo1);
+    mano.add(dedo2);
     mano.position.y = 80;
 
     antebrazo.add(disco);
@@ -166,7 +164,7 @@ function loadScene() {
 
 function render() {
     requestAnimationFrame( render );
-    //update();
+    update();
     renderer.render(scene, camera);
 }
 
