@@ -103,8 +103,8 @@ function loadScene() {
     const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
     palma.rotation.x = Math.PI/2;
 
-    const pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
-    const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matPinza);
+    const pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
+    const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza1.position.z = -10;
     pinza2.position.z = 10;
     pinza1.position.x = 14;
