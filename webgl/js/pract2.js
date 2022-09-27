@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola9');
+    console.log('Hola10');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -126,8 +126,8 @@ function loadScene() {
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
     const dedo2 = new Three.Mesh(malla, matDedos);
     const dedo1 = new Three.Mesh(malla, matDedos);
-    dedo1.position.x -= 20; 
-    dedo1.rotation.x = Math.PI/2;
+    dedo1.rotation.x = Math.PI;
+    dedo1.position.z -= 20; 
 
 
     mano.add(palma);
