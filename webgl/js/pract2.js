@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola10');
+    console.log('Hola11');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
@@ -27,8 +27,8 @@ function init(){
     // camera.lookAt(0,150,0);
 
     // Camara planta --> 
-    // camera.position.set(0, 250, 0);
-    // camera.lookAt(0,0,0);
+    camera.position.set(0, 250, 0);
+    camera.lookAt(0,0,0);
 
     //Camara frontal --> 
     camera.position.set(150, 200, 0);
@@ -127,7 +127,7 @@ function loadScene() {
     const dedo2 = new Three.Mesh(malla, matDedos);
     const dedo1 = new Three.Mesh(malla, matDedos);
     dedo1.rotation.x = Math.PI;
-    dedo1.position.z -= 20; 
+    //dedo1.position.z -= 20; 
 
 
     mano.add(palma);
