@@ -23,12 +23,12 @@ function init(){
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     
     //Camara lateral --> 
-    // camera.position.set(0, 150, 200);
-    // camera.lookAt(0,150,0);
+    camera.position.set(0, 150, 200);
+    camera.lookAt(0,150,0);
 
     // Camara planta --> 
-    camera.position.set(0, 250, 0);
-    camera.lookAt(0,0,0);
+    // camera.position.set(0, 250, 0);
+    // camera.lookAt(0,0,0);
 
     //Camara frontal --> 
     // camera.position.set(150, 200, 0);
@@ -124,8 +124,8 @@ function loadScene() {
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     const matDedos = new Three.MeshBasicMaterial({vertexColors: true});
-    const dedo2 = new Three.Mesh(malla, matDedos);
-    const dedo1 = new Three.Mesh(malla, matDedos);
+    const dedo2 = new Three.Mesh(malla, matRobot);
+    const dedo1 = new Three.Mesh(malla, matRobot);
     dedo1.rotation.x = Math.PI;
     //dedo1.position.z -= 20; 
 
