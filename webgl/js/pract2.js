@@ -13,7 +13,7 @@ render();
 
 function init(){
     renderer = new Three.WebGLRenderer();
-    console.log('Hola8');
+    console.log('Hola9');
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
