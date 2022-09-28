@@ -9,6 +9,9 @@ import { OrbitControls } from "../lib/OrbitControls.module.js";
 // Variables de consenso
 let renderer, scene, camera;
 
+//Camaras adicionales:
+let alzado, planta, perfil, L = 2;
+
 // Otras globales
 let esferaCubo;
 let angulo = 0;
@@ -19,6 +22,28 @@ init();
 loadScene();
 render();
 
+function setCameras(ar){
+    let ortoCamera;
+    if (ar > 1) ortoCamera = new THREE.OrthographicCamera(-L*ar, L*ar, -L, L, 1, 100);
+    else ortoCamera = new THREE.OrthographicCamera(-L, L, L/ar, -L/ar, 1, 100);
+
+    // Alzado:
+    alzado = ortoCamera.clone();
+    alzado.position.set(0,0,L);
+    alzado.lookAt(0,0,0);
+
+    //Planta:
+    planta = ortoCamera.clone();
+    planta.position.set(0,L,0);
+    planta.lookAt(0,0,0);
+    planta.up = new THREE.Vector3(0,0,-1);
+
+    //Perfil:
+    perfil = ortoCamera.clone();
+    planta.position.set(L,0,0);
+    planta.lookAt(0,0,0);
+    
+}
 function init() {
     // Instanciar el motor
     renderer = new THREE.WebGLRenderer();
@@ -32,10 +57,14 @@ function init() {
 
     //Instanciar la camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100);
+    const ar = window.innerWidth / window.innerHeight;
+    setCameras(ar);
+
     camera.position.set(0, 5, 10);
     cameraControls = new OrbitControls(camera, renderer.domElement);
     cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0);
+    
 
     window.addEventListener('resize', updateAspectRatio );
 }
