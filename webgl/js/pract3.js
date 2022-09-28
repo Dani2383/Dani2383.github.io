@@ -1,11 +1,12 @@
 /** Robot para la práctica 2 */
 
 import * as Three from "../lib/three.module.js";
+import { OrbitControls } from "../lib/OrbitControls.module.js";
 
 let renderer, scene, camera;
 
 // Variables globales
-let robot, angulo = 0;
+let robot, angulo = 0, cameraControls;
 //Acciones
 init();
 loadScene();
@@ -20,6 +21,7 @@ function init(){
     scene.background = new Three.Color(0.5, 0.5, 0.5);
 
     camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    cameraControls = new OrbitControls(camera, renderer.domElement);
     
     //Camara lateral --> 
     camera.position.set(50, 90, 200);
