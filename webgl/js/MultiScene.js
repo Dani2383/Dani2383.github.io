@@ -24,8 +24,8 @@ render();
 
 function setCameras(ar){
     let ortoCamera;
-    if (ar > 1) ortoCamera = new THREE.OrthographicCamera(-L*ar, L*ar, L, -L, 1, 100);
-    else ortoCamera = new THREE.OrthographicCamera(-L, L, L/ar, -L/ar, 1, 100);
+    if (ar > 1) ortoCamera = new THREE.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
+    else ortoCamera = new THREE.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
 
     // Alzado:
     alzado = ortoCamera.clone();
@@ -101,7 +101,7 @@ function update(){
 function render() {
     requestAnimationFrame(render);
     update();
-    renderer.render(scene, camera);
+    renderer.render(scene, alzado);
 }
 
 function updateAspectRatio()
