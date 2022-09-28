@@ -13,6 +13,7 @@ loadScene();
 render();
 
 function init(){
+    console.log("subido");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
