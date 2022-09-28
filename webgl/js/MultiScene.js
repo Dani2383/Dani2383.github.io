@@ -10,7 +10,7 @@ import { OrbitControls } from "../lib/OrbitControls.module.js";
 let renderer, scene, camera;
 
 //Camaras adicionales:
-let alzado, planta, perfil, L = 2;
+let alzado, planta, perfil, L = 5;
 
 // Otras globales
 let esferaCubo;
@@ -50,10 +50,11 @@ function init() {
     console.log("Hol4a");
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
+    renderer.autoClear = false;
 
     //Instanciar la escena
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0.5, 0.5, 0.5);
+    //scene.background = new THREE.Color(0.5, 0.5, 0.5);
 
     //Instanciar la camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100);
@@ -67,6 +68,7 @@ function init() {
     
 
     window.addEventListener('resize', updateAspectRatio );
+    renderer.addEventListener('dblclick', rotateShape);
 }
 
 function loadScene() {
@@ -101,12 +103,46 @@ function update(){
 function render() {
     requestAnimationFrame(render);
     update();
+    //Borrar  una unica vez:
+    renderer.clear();
+    //Repartir el canvas en 4 viewPorts con la misma relación de aspecto:
+    renderer.setViewPort(0, 0, window.innerWidth / 2, window.innerHeight / 2);
+    renderer.render(scene, planta);
+
+    renderer.setViewPort(0, window.innerHeight / 2, window.innerWidth / 2, window.innerHeight / 2);
     renderer.render(scene, alzado);
+
+    renderer.setViewPort(window.innerWidth / 2, window.innerHeight / 2, window.innerWidth / 2, window.innerHeight / 2);
+    renderer.render(scene, perfil);
+
+    renderer.setViewPort(window.innerWidth / 2, 0, window.innerWidth / 2, window.innerHeight / 2);
+    renderer.render(scene, camera);
 }
 
 function updateAspectRatio()
 {
   renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth / window.innerHeight;
+  ar =  window.innerWidth / window.innerHeight;
+  camera.aspect = ar;
+
+  //Camaras ortográficas:
+  if (ar > 1) {
+    alzado.left = planta.left = perfil.left = -L*ar;
+    alzado.right = planta.right = perfil.right = L*ar;
+    alzado.top = planta.top = perfil.top = L;
+    alzado.bottom = planta.bottom = perfil.bottom = -L;
+  } else {
+    alzado.left = planta.left = perfil.left = -L;
+    alzado.right = planta.right = perfil.right = L;
+    alzado.top = planta.top = perfil.top = L/ar;
+    alzado.bottom = planta.bottom = perfil.bottom = -L/ar;
+}
+    alzado.updateProjectionMatrix();
+    planta.updateProjectionMatrix();
+    perfil.updateProjectionMatrix();
   camera.updateProjectionMatrix();
+}
+
+function rotateShape(event){
+    // Atención al picking
 }
