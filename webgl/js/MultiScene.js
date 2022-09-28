@@ -3,6 +3,8 @@
 // Modulos necesarios
 
 import * as THREE from "../lib/three.module.js";
+import { OrbitControls } from "../lib/OrbitControls.module.js";
+
 
 // Variables de consenso
 let renderer, scene, camera;
@@ -10,6 +12,7 @@ let renderer, scene, camera;
 // Otras globales
 let esferaCubo;
 let angulo = 0;
+let cameraControls;
 
 // Acciones
 init();
@@ -30,6 +33,8 @@ function init() {
     //Instanciar la camara
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 100);
     camera.position.set(0, 5, 10);
+    cameraControls = new OrbitControls(camera, renderer.domElement);
+    cameraControls.target.set(0,1,0);
     camera.lookAt(0,1,0);
 
     window.addEventListener('resize', updateAspectRatio );
