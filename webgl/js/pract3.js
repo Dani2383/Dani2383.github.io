@@ -1,7 +1,7 @@
 /** Robot para la práctica 2 */
 
 import * as Three from "../lib/three.module.js";
-import { OrbitControls } from "../lib/OrbitControls.module.js";
+import { OrbitControls } from "https://unpkg.com/three@0.140.1/examples/jsm/controls/OrbitControls.js";
 
 let renderer, scene, camera;
 
