@@ -6,39 +6,41 @@ import { OrbitControls } from "https://unpkg.com/three@0.140.1/examples/jsm/cont
 let renderer, scene, camera;
 
 // Variables globales
-let robot, angulo = 0, cameraControls;
+let robot, angulo = 0, cameraControls, L=5;
 //Acciones
 init();
 loadScene();
 render();
 
+function setTopCamera(ar){
+    let planta;
+    if (ar > 1) planta = new THREE.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
+    else planta = new THREE.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
+
+    planta.position.set(0,L,0);
+    planta.lookAt(0,0,0);
+    planta.up = new THREE.Vector3(0,0,-1);
+
+}
+
 function init(){
-    console.log("subido");
+    console.log("cameras");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
     scene = new Three.Scene();
     scene.background = new Three.Color(0.5, 0.5, 0.5);
+    renderer.autoClear = false;
+    ar = window.innerWidth / window.innerHeight;
 
-    camera = new Three.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new Three.PerspectiveCamera(75, ar, 0.1, 1000);
     cameraControls = new OrbitControls(camera, renderer.domElement);
     
     //Camara lateral --> 
     camera.position.set(50, 90, 200);
     camera.lookAt(0,100,0);
-
-    // Camara planta --> 
-    // camera.position.set(0, 250, 0);
-    // camera.lookAt(0,0,0);
-
-    //Camara frontal --> 
-    // camera.position.set(150, 200, 0);
-    // camera.lookAt(0,200,0);
-
-    // Camara inferior --> 
-    //  camera.position.set(13, 150, 0);
-    //  camera.lookAt(13,200,0);
+    setTopCamera(ar);
 
     window.addEventListener('resize', updateAspectRatio );
 }
@@ -168,6 +170,11 @@ function loadScene() {
 function render() {
     requestAnimationFrame( render );
     update();
+    renderer.clear();
+    renderer.setViewPort(0, window.innherHeigth * 3/4, window.innerWidth / 4, window.innerHeight / 4)
+    renderer.render(scene, planta);
+
+    renderer.setViewPort(0,0,window.innerWidth, window.innerHeight)
     renderer.render(scene, camera);
 }
 
@@ -178,7 +185,22 @@ function update() {
 
 function updateAspectRatio()
 {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    ar = window.innerWidth / window.innerHeight;
+    camera.aspect = ar;
+
+    if (ar > 1) {
+        planta.left = -L*ar;
+        planta.right = L*ar;
+        planta.top = L;
+        planta.bottom = -L;
+    } else {
+        planta.left = -L;
+        planta.right = L;
+        planta.top = L/ar;
+        planta.bottom = -L/ar;
+    }
+
+    planta.updateProjectionMatrix();
+    camera.updateProjectionMatrix();
 }
