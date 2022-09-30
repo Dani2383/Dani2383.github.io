@@ -32,7 +32,7 @@ function init(){
     scene = new Three.Scene();
     scene.background = new Three.Color(0.5, 0.5, 0.5);
     renderer.autoClear = false;
-    ar = window.innerWidth / window.innerHeight;
+    let ar = window.innerWidth / window.innerHeight;
 
     camera = new Three.PerspectiveCamera(75, ar, 0.1, 1000);
     cameraControls = new OrbitControls(camera, renderer.domElement);
@@ -186,7 +186,7 @@ function update() {
 function updateAspectRatio()
 {
     renderer.setSize(window.innerWidth, window.innerHeight);
-    ar = window.innerWidth / window.innerHeight;
+    let ar = window.innerWidth / window.innerHeight;
     camera.aspect = ar;
 
     if (ar > 1) {
