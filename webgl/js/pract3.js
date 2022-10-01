@@ -14,12 +14,12 @@ render();
 
 function setTopCamera(ar){
     let planta;
-    if (ar > 1) planta = new THREE.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
-    else planta = new THREE.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
+    if (ar > 1) planta = new Three.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
+    else planta = new Three.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
 
     planta.position.set(0,L,0);
     planta.lookAt(0,0,0);
-    planta.up = new THREE.Vector3(0,0,-1);
+    planta.up = new Three.Vector3(0,0,-1);
 
 }
 
