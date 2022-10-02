@@ -24,7 +24,7 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log("camerassdas");
+    console.log("camerassdas3434");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -171,11 +171,12 @@ function render() {
     requestAnimationFrame( render );
     update();
     renderer.clear();
+    
+    renderer.setViewport(0,0,window.innerWidth, window.innerHeight)
+    renderer.render(scene, camera);
+
     renderer.setViewport(0, window.innherHeigth * 3/4, window.innerWidth / 4, window.innerHeight / 4)
     renderer.render(scene, planta);
-
-    // renderer.setViewport(0,0,window.innerWidth, window.innerHeight)
-    // renderer.render(scene, camera);s
 }
 
 function update() {
