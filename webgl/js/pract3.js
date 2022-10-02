@@ -50,7 +50,7 @@ function init(){
 function loadScene() {
     //const matRobot = new Three.MeshBasicMaterial({ color: 'red', wireframe: true });
     const matRobot = new Three.MeshNormalMaterial();
-    const matSuelo = new Three.MeshBasicMaterial({ color: 'yellow', wireframe: true });
+    const matSuelo = new Three.MeshNormalMaterial();
 
     //suelo
     const suelo = new Three.Mesh( new Three.PlaneGeometry(1000, 1000, 10, 10), matSuelo);
