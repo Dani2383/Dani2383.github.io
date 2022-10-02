@@ -4,6 +4,7 @@ import * as Three from "../lib/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.140.1/examples/jsm/controls/OrbitControls.js";
 
 let renderer, scene, camera;
+let planta;
 
 // Variables globales
 let robot, angulo = 0, cameraControls, L=5;
@@ -13,7 +14,6 @@ loadScene();
 render();
 
 function setTopCamera(ar){
-    let planta;
     if (ar > 1) planta = new Three.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
     else planta = new Three.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
 
