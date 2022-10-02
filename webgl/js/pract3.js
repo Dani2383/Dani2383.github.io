@@ -171,10 +171,10 @@ function render() {
     requestAnimationFrame( render );
     update();
     renderer.clear();
-    renderer.setViewPort(0, window.innherHeigth * 3/4, window.innerWidth / 4, window.innerHeight / 4)
+    renderer.setViewport(0, window.innherHeigth * 3/4, window.innerWidth / 4, window.innerHeight / 4)
     renderer.render(scene, planta);
 
-    renderer.setViewPort(0,0,window.innerWidth, window.innerHeight)
+    renderer.setViewport(0,0,window.innerWidth, window.innerHeight)
     renderer.render(scene, camera);
 }
 
