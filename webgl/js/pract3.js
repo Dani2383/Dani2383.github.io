@@ -7,30 +7,32 @@ let renderer, scene, camera;
 let planta;
 
 // Variables globales
-let robot, angulo = 0, cameraControls, L=5;
+let robot, angulo = 0, cameraControls, L=100;
 //Acciones
 init();
 loadScene();
 render();
 
 function setTopCamera(ar){
-    if (ar > 1) planta = new Three.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 100);
-    else planta = new Three.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 100);
+    let camaraOrtografica;
+    if (ar > 1) camaraOrtografica = new Three.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 10000);
+    else camaraOrtografica = new Three.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 10000);
 
-    planta.position.set(0,L,0);
+    planta = camaraOrtografica.clone();
+    planta.position.set(0,L*3,0);
     planta.lookAt(0,0,0);
     planta.up = new Three.Vector3(0,0,-1);
 
 }
 
 function init(){
-    console.log("camerassdas3434");
+    console.log("asd");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
 
     scene = new Three.Scene();
-    scene.background = new Three.Color(0.5, 0.5, 0.5);
+    renderer.setClearColor(0xAAAAAA);
     renderer.autoClear = false;
     let ar = window.innerWidth / window.innerHeight;
 
