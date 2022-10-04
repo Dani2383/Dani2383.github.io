@@ -26,7 +26,7 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log("asd");
+    console.log("asddsa");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -159,8 +159,8 @@ function loadScene() {
     getNormalVector(vectorPositions[11], vectorPositions[9], vectorPositions[8]); getNormalVector(vectorPositions[8], vectorPositions[10], vectorPositions[9]); // Debajo
     getNormalVector(vectorPositions[9], vectorPositions[11], vectorPositions[10]); getNormalVector(vectorPositions[10], vectorPositions[8], vectorPositions[11]); // Debajo
 
-    getNormalVector(vectorPositions[15], vectorPositions[13], vectorPositions[12]); getNormalVector(vectorPositions[14], vectorPositions[12], vectorPositions[13]); // Delante
-    getNormalVector(vectorPositions[13], vectorPositions[15], vectorPositions[14]); getNormalVector(vectorPositions[12], vectorPositions[14], vectorPositions[15]); // Delante
+    getNormalVector(vectorPositions[13], vectorPositions[15], vectorPositions[12]); getNormalVector(vectorPositions[14], vectorPositions[12], vectorPositions[13]); // Delante
+    getNormalVector(vectorPositions[15], vectorPositions[13], vectorPositions[14]); getNormalVector(vectorPositions[12], vectorPositions[14], vectorPositions[15]); // Delante
 
     getNormalVector(vectorPositions[17], vectorPositions[18], vectorPositions[16]); getNormalVector(vectorPositions[19], vectorPositions[16], vectorPositions[17]); // Izquierda
     getNormalVector(vectorPositions[16], vectorPositions[19], vectorPositions[18]); getNormalVector(vectorPositions[18], vectorPositions[17], vectorPositions[19]); // Izquierda
