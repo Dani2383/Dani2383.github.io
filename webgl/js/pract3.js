@@ -7,7 +7,7 @@ let renderer, scene, camera;
 let planta;
 
 // Variables globales
-let robot, angulo = 0, L=100, normals = [];
+let robot, angulo = 0, cameraControls, L=100, normals = [];
 //Acciones
 init();
 loadScene();
