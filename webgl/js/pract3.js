@@ -48,7 +48,6 @@ function init(){
 }
 
 function loadScene() {
-    //const matRobot = new Three.MeshBasicMaterial({ color: 'red', wireframe: true });
     const matRobot = new Three.MeshNormalMaterial();
     const matSuelo = new Three.MeshNormalMaterial();
 
@@ -179,6 +178,7 @@ function loadScene() {
     const indices = [1,0,3, 1,3,2, 4,5,7, 5,6,7, // Top, Back
                     9,8,11, 10,9,11, 12,13,14, 12,14,15, // Bot, Front
                     16,17,18, 17,19,18, 20,22,21, 21,22,23]; // Left, Right
+                    
     malla.setIndex(indices);
     //malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
