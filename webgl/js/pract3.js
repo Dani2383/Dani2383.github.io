@@ -138,8 +138,8 @@ function loadScene() {
     // const coord = [23,10,12, 23,10,8, 42,6,8, 42,6,10,           0-3
     //                 23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];     4-7
 
-    const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
-                    0,1,0, 0,1,1, 0,0,1, 0,0,0];
+    // const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
+    //                 0,1,0, 0,1,1, 0,0,1, 0,0,0];
 
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     let vectorPositions = [];
@@ -180,7 +180,7 @@ function loadScene() {
                     9,8,11, 10,9,11, 12,13,14, 12,14,15, // Bot, Front
                     16,17,18, 17,19,18, 20,22,21, 21,22,23]; // Left, Right
     malla.setIndex(indices);
-    malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
+    //malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
     const dedo2 = new Three.Mesh(malla, matRobot);
     const dedo1 = new Three.Mesh(malla, matRobot);
