@@ -15,8 +15,8 @@ render();
 
 function setTopCamera(ar){
     let camaraOrtografica;
-    if (ar > 1) camaraOrtografica = new Three.OrthographicCamera(-L*ar, L*ar, L, -L, -10, 10000);
-    else camaraOrtografica = new Three.OrthographicCamera(-L, L, L/ar, -L/ar, -10, 10000);
+    if (ar > 1) camaraOrtografica = new Three.OrthographicCamera(-1/4*window.innerHeight, 1/4*window.innerHeight, 1/4*window.innerHeight, -1/4*window.innerHeight, -10, 10000);
+    else camaraOrtografica = new Three.OrthographicCamera(-1/4*window.innerWidth, 1/4*window.innerWidth, 1/4*window.innerWidth, -1/4*window.innerWidth, -10, 10000);
 
     planta = camaraOrtografica.clone();
     planta.position.set(0,L*3,0);
