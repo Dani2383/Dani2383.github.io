@@ -26,7 +26,6 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log("asddsa");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -132,13 +131,6 @@ function loadScene() {
         23,10,12, 42,6,10, 23,-10,12, 42,-6,10 // Derecha 20-23
 
     ]
-    
-    
-    // const coord = [23,10,12, 23,10,8, 42,6,8, 42,6,10,           0-3
-    //                 23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8];     4-7
-
-    // const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
-    //                 0,1,0, 0,1,1, 0,0,1, 0,0,0];
 
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     let vectorPositions = [];
@@ -166,21 +158,12 @@ function loadScene() {
 
     getNormalVector(vectorPositions[22], vectorPositions[21], vectorPositions[20]); getNormalVector(vectorPositions[20], vectorPositions[23], vectorPositions[21]); // Derecha
     getNormalVector(vectorPositions[23], vectorPositions[20], vectorPositions[22]); getNormalVector(vectorPositions[21], vectorPositions[22], vectorPositions[23]); // Derecha
-    
-    // const normals = [0,1,-2, 0,1,-2, -1,0,0, -1,0,0, // Top back
-    //                 0,-1,-2, 0,-1,-2, 1,0,0, 1,0,0, //Bot front
-    //                 0,0,-1, 0,0,-1, 0,0,1, 0,0,1]; //Left right
-
-    // const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5, // Top, Back
-    //                 5,4,7, 6,5,7, 2,3,6, 2,6,7, // Bot, Front
-    //                 1,2,4, 2,7,4, 0,5,3, 3,5,6]; // Left, Right
 
     const indices = [1,0,3, 1,3,2, 4,5,7, 5,6,7, // Top, Back
                     9,8,11, 10,9,11, 12,13,14, 12,14,15, // Bot, Front
                     16,17,18, 17,19,18, 20,22,21, 21,22,23]; // Left, Right
-                    
+
     malla.setIndex(indices);
-    //malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
     const dedo2 = new Three.Mesh(malla, matRobot);
     const dedo1 = new Three.Mesh(malla, matRobot);
