@@ -7,7 +7,7 @@ let renderer, scene, camera;
 let planta;
 
 // Variables globales
-let robot, angulo = 0, cameraControls, L=100, normals = [];
+let robot, angulo = 0, L=100, normals = [];
 //Acciones
 init();
 loadScene();
@@ -26,6 +26,7 @@ function setTopCamera(ar){
 }
 
 function init(){
+    console.log('asdg');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -218,17 +219,17 @@ function updateAspectRatio()
     let ar = window.innerWidth / window.innerHeight;
     camera.aspect = ar;
     planta.aspect = 1;
-    // if (ar > 1) {
-    //     planta.left = -L;
-    //     planta.right = L;
-    //     planta.top = L;
-    //     planta.bottom = -L;
-    // } else {
-    //     planta.left = -L/ar;
-    //     planta.right = L/ar;
-    //     planta.top = L/ar;
-    //     planta.bottom = -L/ar;
-    // }
+    if (ar > 1) {
+        planta.left = -1/4*window.innerHeight;
+        planta.right = 1/4*window.innerHeight;
+        planta.top = 1/4*window.innerHeight;
+        planta.bottom = -1/4*window.innerHeight;
+    } else {
+        planta.left = -1/4*window.innerWidth;
+        planta.right = 1/4*window.innerWidth;
+        planta.top = 1/4*window.innerWidth;
+        planta.bottom = -1/4*window.innerWidth;
+    }
 
     planta.updateProjectionMatrix();
     camera.updateProjectionMatrix();
