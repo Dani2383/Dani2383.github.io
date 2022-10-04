@@ -142,7 +142,7 @@ function loadScene() {
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
 
     malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
-    vectorPositions = [];
+    let vectorPositions = [];
 
     for(let i = 0;i<posicion.length/3;i++){
         const v = new Three.Vector3( );
