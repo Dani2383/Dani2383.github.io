@@ -12,6 +12,7 @@ loadScene();
 render();
 
 function init(){
+    console.log('asddsa');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
