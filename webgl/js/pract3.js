@@ -217,18 +217,18 @@ function updateAspectRatio()
     renderer.setSize(window.innerWidth, window.innerHeight);
     let ar = window.innerWidth / window.innerHeight;
     camera.aspect = ar;
-
-    if (ar > 1) {
-        planta.left = -L*ar;
-        planta.right = L*ar;
-        planta.top = L;
-        planta.bottom = -L;
-    } else {
-        planta.left = -L;
-        planta.right = L;
-        planta.top = L/ar;
-        planta.bottom = -L/ar;
-    }
+    planta.aspect = 1;
+    // if (ar > 1) {
+    //     planta.left = -L;
+    //     planta.right = L;
+    //     planta.top = L;
+    //     planta.bottom = -L;
+    // } else {
+    //     planta.left = -L/ar;
+    //     planta.right = L/ar;
+    //     planta.top = L/ar;
+    //     planta.bottom = -L/ar;
+    // }
 
     planta.updateProjectionMatrix();
     camera.updateProjectionMatrix();
