@@ -7,7 +7,7 @@ let renderer, scene, camera;
 let planta;
 
 // Variables globales
-let robot, angulo = 0, cameraControls, L=100;
+let robot, angulo = 0, cameraControls, L=100, normals = [];
 //Acciones
 init();
 loadScene();
@@ -26,7 +26,7 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log("ghfgdhfg");
+    console.log("asd");
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -129,6 +129,7 @@ function loadScene() {
         23,-10,8, 23,-10,12, 42,-6,10, 42,-6,8, // Debajo 8 - 11
         42,6,8, 42,6,10, 42,-6,10, 42,-6,8, // Delante 12-15
         23,10,8, 42,6,8, 23,-10,8, 42,-6,8, // Izquierda 16-19
+
         23,10,12, 42,6,10, 23,-10,12, 42,-6,10 // Derecha 20-23
 
     ]
@@ -139,10 +140,37 @@ function loadScene() {
 
     const colors = [1,0,0, 1,0,1, 1,1,1, 1,1,0,
                     0,1,0, 0,1,1, 0,0,1, 0,0,0];
+
+    malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
+    vectorPositions = [];
+
+    for(let i = 0;i<posicion.length/3;i++){
+        const v = new Three.Vector3( );
+        v.fromBufferAttribute(bufferPosition,i)
+        vectorPositions.push(v)
+    }
+
+    getNormalVector(vectorPositions[3], vectorPositions[1], vectorPositions[0]); getNormalVector(vectorPositions[0], vectorPositions[2], vectorPositions[1]); // Arriba
+    getNormalVector(vectorPositions[1], vectorPositions[3], vectorPositions[2]); getNormalVector(vectorPositions[2], vectorPositions[0], vectorPositions[3]); // Arriba
+
+    getNormalVector(vectorPositions[5], vectorPositions[7], vectorPositions[4]); getNormalVector(vectorPositions[6], vectorPositions[4], vectorPositions[5]); // Detras
+    getNormalVector(vectorPositions[7], vectorPositions[5], vectorPositions[6]); getNormalVector(vectorPositions[4], vectorPositions[6], vectorPositions[7]); // Detras
+
+    getNormalVector(vectorPositions[11], vectorPositions[9], vectorPositions[8]); getNormalVector(vectorPositions[8], vectorPositions[10], vectorPositions[9]); // Debajo
+    getNormalVector(vectorPositions[9], vectorPositions[11], vectorPositions[10]); getNormalVector(vectorPositions[10], vectorPositions[8], vectorPositions[11]); // Debajo
+
+    getNormalVector(vectorPositions[13], vectorPositions[15], vectorPositions[12]); getNormalVector(vectorPositions[12], vectorPositions[14], vectorPositions[13]); // Delante
+    getNormalVector(vectorPositions[15], vectorPositions[13], vectorPositions[14]); getNormalVector(vectorPositions[14], vectorPositions[12], vectorPositions[15]); // Delante
+
+    getNormalVector(vectorPositions[17], vectorPositions[18], vectorPositions[16]); getNormalVector(vectorPositions[19], vectorPositions[16], vectorPositions[17]); // Izquierda
+    getNormalVector(vectorPositions[16], vectorPositions[19], vectorPositions[18]); getNormalVector(vectorPositions[18], vectorPositions[17], vectorPositions[19]); // Izquierda
+
+    getNormalVector(vectorPositions[22], vectorPositions[21], vectorPositions[20]); getNormalVector(vectorPositions[20], vectorPositions[23], vectorPositions[21]); // Derecha
+    getNormalVector(vectorPositions[23], vectorPositions[20], vectorPositions[22]); getNormalVector(vectorPositions[21], vectorPositions[22], vectorPositions[23]); // Derecha
     
-    const normals = [0,1,-2, 0,1,-2, -1,0,0, -1,0,0, // Top back
-                    0,-1,-2, 0,-1,-2, 1,0,0, 1,0,0, //Bot front
-                    0,0,-1, 0,0,-1, 0,0,1, 0,0,1]; //Left right
+    // const normals = [0,1,-2, 0,1,-2, -1,0,0, -1,0,0, // Top back
+    //                 0,-1,-2, 0,-1,-2, 1,0,0, 1,0,0, //Bot front
+    //                 0,0,-1, 0,0,-1, 0,0,1, 0,0,1]; //Left right
 
     // const indices = [1,0,3, 1,3,2, 0,1,5, 1,4,5, // Top, Back
     //                 5,4,7, 6,5,7, 2,3,6, 2,6,7, // Bot, Front
@@ -152,7 +180,6 @@ function loadScene() {
                     9,8,11, 10,9,11, 12,13,14, 12,14,15, // Bot, Front
                     16,17,18, 17,19,18, 20,22,21, 21,22,23]; // Left, Right
     malla.setIndex(indices);
-    malla.setAttribute( 'position', new Three.Float32BufferAttribute(coord, 3));
     malla.setAttribute( 'color', new Three.Float32BufferAttribute(colors, 3));
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
     const dedo2 = new Three.Mesh(malla, matRobot);
@@ -222,4 +249,14 @@ function updateAspectRatio()
 
     planta.updateProjectionMatrix();
     camera.updateProjectionMatrix();
+}
+
+function getNormalVector(pos1, pos2, posNormal){
+    const normal = new Three.Vector3();
+    const x = new Three.Vector3();
+    const y = new Three.Vector3();
+    x.subVectors(pos1, posNormal);
+    y.subVectors(pos2, posNormal);
+    normal.crossVectors(x, y);
+    normals.push(normal.x, normal.y, normal.z);
 }
