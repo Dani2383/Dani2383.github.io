@@ -26,7 +26,7 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log('asdg');
+    console.log('asdgfhjk');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -205,7 +205,7 @@ function render() {
     renderer.render(scene, camera);
 
     let side = window.innerWidth > window.innerHeight ? 1/4 * window.innerHeight : 1/4 * window.innerWidth;
-    renderer.setViewport(0, 0, side, side);
+    renderer.setViewport(0, side, side, side);
     renderer.render(scene, planta);
 }
 
