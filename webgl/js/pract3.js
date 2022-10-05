@@ -205,7 +205,7 @@ function render() {
     renderer.render(scene, camera);
 
     let side = window.innerWidth > window.innerHeight ? 1/4 * window.innerHeight : 1/4 * window.innerWidth;
-    renderer.setViewport(0, side, side, side);
+    renderer.setViewport(0, window.innerHeight-side, side, side);
     renderer.render(scene, planta);
 }
 
