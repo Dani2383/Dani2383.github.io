@@ -14,6 +14,7 @@ let robot, angulo = 0, cameraControls, L=100, normals = [];
 //Acciones
 init();
 loadScene();
+setupGUI();
 render();
 
 
@@ -225,6 +226,30 @@ function updateAspectRatio()
 
     planta.updateProjectionMatrix();
     camera.updateProjectionMatrix();
+}
+
+function setupGUI(){
+    const gui = new GUI();
+    const myGUI = {
+        GiroBase: 0,
+        GiroBrazo: 0,
+        GiroAntebrazoY: 0,
+        GiroAntebrazoZ: 0,
+        GiroPinza: 0,
+        SeparacionPinza: 10,
+        Alambres: false
+    }
+
+    gui.add(myGUI, 'GiroBase', -180, 180);
+    gui.add(myGUI, 'GiroBrazo', -45, 45);
+    gui.add(myGUI, 'GiroAntebrazoY', -180, 180);
+    gui.add(myGUI, 'GiroAntebrazoZ', -90, 90);
+    gui.add(myGUI, 'GiroPinza', -40, 220);
+    gui.add(myGUI, 'SeparacionPinza', 0, 15);
+    gui.add(myGUI, 'Alambres');
+
+
+
 }
 
 function setTopCamera(ar){
