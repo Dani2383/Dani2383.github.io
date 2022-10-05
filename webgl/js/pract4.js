@@ -19,6 +19,7 @@ render();
 
 
 function init(){
+    console.log('lfghskjfhsd');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
