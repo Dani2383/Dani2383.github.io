@@ -26,7 +26,6 @@ function setTopCamera(ar){
 }
 
 function init(){
-    console.log('asdgfhjk');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
