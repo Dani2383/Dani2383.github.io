@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('giros varios');
+    console.log('giros varios puede que arreglados');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -238,13 +238,13 @@ function setupGUI(){
     }
 
     gui.add(myGUI, 'GiroBase', -180, 180).name('Giro Base')
-        .onChange(value => base.rotation.y = value);
+        .onChange(value => base.rotation.y = value * Math.PI / 180);
     gui.add(myGUI, 'GiroBrazo', -45, 45).name('Giro Brazo')
-        .onChange(value => brazo.rotation.x = value);
+        .onChange(value => brazo.rotation.z = value * Math.PI / 180);
     gui.add(myGUI, 'GiroAntebrazoY', -180, 180).name('Giro Antebrazo en Y')
-        .onChange(value => antebrazo.rotation.y = value);
+        .onChange(value => antebrazo.rotation.y = value * Math.PI / 180);
     gui.add(myGUI, 'GiroAntebrazoZ', -90, 90).name('Giro antebrazo en Z')
-        .onChange(value => antebrazo.rotation.z = value);
+        .onChange(value => antebrazo.rotation.z = value * Math.PI / 180);
     gui.add(myGUI, 'GiroPinza', -40, 220).name('Giro Pinza');
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza');
     gui.add(myGUI, 'Alambres').name('Alambres');
