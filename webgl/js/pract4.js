@@ -12,7 +12,7 @@ let planta;
 // Variables globales
 let robot, cameraControls, L=100, normals = [];
 //Partes del robot:
-let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco;
+let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot;
 //Acciones
 init();
 loadScene();
@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('giros varios puede que arreglados');
+    console.log('Controles terminados');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -43,7 +43,7 @@ function init(){
 }
 
 function loadScene() {
-    const matRobot = new Three.MeshNormalMaterial();
+    matRobot = new Three.MeshNormalMaterial({wireframe: false});
     const matSuelo = new Three.MeshNormalMaterial();
 
     //suelo
@@ -167,10 +167,12 @@ function loadScene() {
 
 
     mano.add(palma);
+    pinza1.add(dedo1);
+    pinza2.add(dedo2);
     mano.add(pinza1);
     mano.add(pinza2);
-    mano.add(dedo1);
-    mano.add(dedo2);
+    //mano.add(dedo1);
+    //mano.add(dedo2);
     mano.position.y = 80;
 
     antebrazo.add(disco);
@@ -245,9 +247,15 @@ function setupGUI(){
         .onChange(value => antebrazo.rotation.y = value * Math.PI / 180);
     gui.add(myGUI, 'GiroAntebrazoZ', -90, 90).name('Giro antebrazo en Z')
         .onChange(value => antebrazo.rotation.z = value * Math.PI / 180);
-    gui.add(myGUI, 'GiroPinza', -40, 220).name('Giro Pinza');
-    gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza');
-    gui.add(myGUI, 'Alambres').name('Alambres');
+    gui.add(myGUI, 'GiroPinza', -40, 220).name('Giro Pinza')
+        .onChange(value => mano.rotation.z = value * Math.PI / 180);
+    gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza')
+        .onChange(value => {
+            pinza1.position.z = (-value/2) * Math.PI / 180;
+            pinza2.pisition.z = (value/2) * Math.PI / 180;
+        });
+    gui.add(myGUI, 'Alambres').name('Alambres')
+        .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
 
 
 
