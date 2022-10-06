@@ -10,7 +10,7 @@ let renderer, scene, camera;
 let planta;
 
 // Variables globales
-let robot, angulo = 0, cameraControls, L=100, normals = [];
+let robot, cameraControls, L=100, normals = [];
 //Partes del robot:
 let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco;
 //Acciones
@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('giro base');
+    console.log('giros varios');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -193,7 +193,6 @@ function loadScene() {
 
 function render() {
     requestAnimationFrame( render );
-    update();
     renderer.clear();
     
     renderer.setViewport(0,0,window.innerWidth, window.innerHeight)
@@ -202,11 +201,6 @@ function render() {
     let side = window.innerWidth > window.innerHeight ? 1/4 * window.innerHeight : 1/4 * window.innerWidth;
     renderer.setViewport(0, window.innerHeight-side, side, side);
     renderer.render(scene, planta);
-}
-
-function update() {
-    angulo += 0.005;
-    robot.rotation.y = angulo;
 }
 
 function updateAspectRatio()
@@ -245,9 +239,12 @@ function setupGUI(){
 
     gui.add(myGUI, 'GiroBase', -180, 180).name('Giro Base')
         .onChange(value => base.rotation.y = value);
-    gui.add(myGUI, 'GiroBrazo', -45, 45).name('Giro Brazo');
-    gui.add(myGUI, 'GiroAntebrazoY', -180, 180).name('Giro Antebrazo en Y');
-    gui.add(myGUI, 'GiroAntebrazoZ', -90, 90).name('Giro antebrazo en Z');
+    gui.add(myGUI, 'GiroBrazo', -45, 45).name('Giro Brazo')
+        .onChange(value => brazo.rotation.x = value);
+    gui.add(myGUI, 'GiroAntebrazoY', -180, 180).name('Giro Antebrazo en Y')
+        .onChange(value => antebrazo.rotation.y = value);
+    gui.add(myGUI, 'GiroAntebrazoZ', -90, 90).name('Giro antebrazo en Z')
+        .onChange(value => antebrazo.rotation.z = value);
     gui.add(myGUI, 'GiroPinza', -40, 220).name('Giro Pinza');
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza');
     gui.add(myGUI, 'Alambres').name('Alambres');
