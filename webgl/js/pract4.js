@@ -12,7 +12,7 @@ let planta;
 // Variables globales
 let robot, cameraControls, L=100, normals = [];
 //Partes del robot:
-let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot;
+let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot, dedo1, dedo2;
 //Acciones
 init();
 loadScene();
@@ -161,8 +161,8 @@ function loadScene() {
 
     malla.setIndex(indices);
     malla.setAttribute( 'normal', new Three.Float32BufferAttribute(normals, 3));
-    const dedo2 = new Three.Mesh(malla, matRobot);
-    const dedo1 = new Three.Mesh(malla, matRobot);
+    dedo1 = new Three.Mesh(malla, matRobot);
+    dedo2 = new Three.Mesh(malla, matRobot);
     dedo1.rotation.x = Math.PI;
 
 
