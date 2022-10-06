@@ -12,7 +12,7 @@ let planta;
 // Variables globales
 let robot, cameraControls, L=100, normals = [];
 //Partes del robot:
-let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot, dedo1, dedo2;
+let base, brazo, eje, nervios, esparrago, rotula, pinzaPosBase, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot, dedo1, dedo2;
 //Acciones
 init();
 loadScene();
@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('Controles POSICION');
+    console.log('Controles POSICION bien');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -108,6 +108,7 @@ function loadScene() {
     pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza1.position.z = -10;
+    pinzaPosBase = 10
     pinza2.position.z = 10;
     pinza1.position.x = 14;
     pinza2.position.x = 14;
@@ -249,8 +250,8 @@ function setupGUI(){
         .onChange(value => mano.rotation.z = value * Math.PI / 180);
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza')
         .onChange(value => {
-            pinza1.position.z = (-value/2);
-            pinza2.position.z = (value/2);
+            pinza1.position.z = pinzaPosBase - (value/2);
+            pinza2.position.z = pinzaPosBase + (value/2);
             dedo1.position.z = (-value/2);
             dedo2.position.z = (value/2);
         });
