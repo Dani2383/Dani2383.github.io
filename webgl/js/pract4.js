@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('Controles POSICION bien');
+    console.log('Controles POSICION BIEN');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -250,10 +250,10 @@ function setupGUI(){
         .onChange(value => mano.rotation.z = value * Math.PI / 180);
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza')
         .onChange(value => {
-            pinza1.position.z = pinzaPosBase - (value/2);
-            pinza2.position.z = pinzaPosBase + (value/2);
-            dedo1.position.z = (-value/2);
-            dedo2.position.z = (value/2);
+            pinza1.position.z = -pinzaPosBase - value;
+            pinza2.position.z = pinzaPosBase + value;
+            dedo1.position.z = -value;
+            dedo2.position.z = value;
         });
     gui.add(myGUI, 'Alambres').name('Alambres')
         .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
