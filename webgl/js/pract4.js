@@ -250,10 +250,10 @@ function setupGUI(){
         .onChange(value => mano.rotation.z = value * Math.PI / 180);
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza')
         .onChange(value => {
-            pinza1.position.z = -pinzaPosBase - value;
-            pinza2.position.z = pinzaPosBase + value;
-            dedo1.position.z = -value;
-            dedo2.position.z = value;
+            pinza1.position.z = - value;
+            pinza2.position.z = value;
+            dedo1.position.z = -pinzaPosBase - value;
+            dedo2.position.z = pinzaPosBase + value;
         });
     gui.add(myGUI, 'Alambres').name('Alambres')
         .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
