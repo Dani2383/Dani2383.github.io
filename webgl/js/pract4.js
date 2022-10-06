@@ -167,12 +167,10 @@ function loadScene() {
 
 
     mano.add(palma);
-    pinza1.add(dedo1);
-    pinza2.add(dedo2);
     mano.add(pinza1);
     mano.add(pinza2);
-    //mano.add(dedo1);
-    //mano.add(dedo2);
+    mano.add(dedo1);
+    mano.add(dedo2);
     mano.position.y = 80;
 
     antebrazo.add(disco);
@@ -252,7 +250,9 @@ function setupGUI(){
     gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza')
         .onChange(value => {
             pinza1.position.z = (-value/2) * Math.PI / 180;
-            pinza2.pisition.z = (value/2) * Math.PI / 180;
+            pinza2.position.z = (value/2) * Math.PI / 180;
+            dedo1.position.z = (-value/2) * Math.PI / 180;
+            dedo2.position.z = (value/2) * Math.PI / 180;
         });
     gui.add(myGUI, 'Alambres').name('Alambres')
         .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
