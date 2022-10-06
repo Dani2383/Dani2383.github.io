@@ -11,6 +11,8 @@ let planta;
 
 // Variables globales
 let robot, angulo = 0, cameraControls, L=100, normals = [];
+//Partes del robot:
+let base, brazo, eje, nervios, esparrago, rotula, pinza1, pinza2, mano, palma, antebrazo, disco;
 //Acciones
 init();
 loadScene();
@@ -19,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('lfghskjfhsd');
+    console.log('giro base');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -56,27 +58,27 @@ function loadScene() {
     robot.position.y = 1;
 
     //Base del robot:
-    const base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 20, 10), matRobot);
+    base = new Three.Mesh(new Three.CylinderGeometry(50, 50, 15, 20, 10), matRobot);
 
     // Brazo:
     
-    const brazo = new Three.Object3D();
+    brazo = new Three.Object3D();
     
-    const eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10), matRobot);
+    eje = new Three.Mesh(new Three.CylinderGeometry(20, 20, 18, 10, 10), matRobot);
     eje.rotation.x = Math.PI/2;
 
-    const esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
+    esparrago = new Three.Mesh(new Three.BoxGeometry(18, 120, 12), matRobot);
     esparrago.position.y = 60;
 
-    const rotula = new Three.Mesh(new Three.SphereGeometry(20, 10, 10), matRobot);
+    rotula = new Three.Mesh(new Three.SphereGeometry(20, 10, 10), matRobot);
     rotula.position.y = 120;
 
     //Antebrazo:
 
-    const antebrazo = new Three.Object3D();
+    antebrazo = new Three.Object3D();
     
-    const disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 10, 10), matRobot);
-    const nervios = new Three.Object3D();
+    disco = new Three.Mesh(new Three.CylinderGeometry(22, 22, 6, 10, 10), matRobot);
+    nervios = new Three.Object3D();
 
     const nervio1 = new Three.Mesh(new Three.BoxGeometry(4, 80, 4), matRobot);
     nervio1.position.x = 5;
@@ -99,12 +101,12 @@ function loadScene() {
     
     //Mano:
 
-    const mano = new Three.Object3D();
-    const palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
+    mano = new Three.Object3D();
+    palma = new Three.Mesh(new Three.CylinderGeometry(15, 15, 40, 10, 5), matRobot);
     palma.rotation.x = Math.PI/2;
 
-    const pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
-    const pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
+    pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
+    pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza1.position.z = -10;
     pinza2.position.z = 10;
     pinza1.position.x = 14;
@@ -241,13 +243,14 @@ function setupGUI(){
         Alambres: false
     }
 
-    gui.add(myGUI, 'GiroBase', -180, 180);
-    gui.add(myGUI, 'GiroBrazo', -45, 45);
-    gui.add(myGUI, 'GiroAntebrazoY', -180, 180);
-    gui.add(myGUI, 'GiroAntebrazoZ', -90, 90);
-    gui.add(myGUI, 'GiroPinza', -40, 220);
-    gui.add(myGUI, 'SeparacionPinza', 0, 15);
-    gui.add(myGUI, 'Alambres');
+    gui.add(myGUI, 'GiroBase', -180, 180).name('Giro Base')
+        .onChange(value => base.rotation.y = value);
+    gui.add(myGUI, 'GiroBrazo', -45, 45).name('Giro Brazo');
+    gui.add(myGUI, 'GiroAntebrazoY', -180, 180).name('Giro Antebrazo en Y');
+    gui.add(myGUI, 'GiroAntebrazoZ', -90, 90).name('Giro antebrazo en Z');
+    gui.add(myGUI, 'GiroPinza', -40, 220).name('Giro Pinza');
+    gui.add(myGUI, 'SeparacionPinza', 0, 15).name('Separación Pinza');
+    gui.add(myGUI, 'Alambres').name('Alambres');
 
 
 
