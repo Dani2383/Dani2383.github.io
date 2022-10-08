@@ -252,8 +252,8 @@ function setupGUI(){
         .onChange(value => {
             pinza1.position.z = - value;
             pinza2.position.z = value;
-            dedo1.position.z = -pinzaPosBase - value;
-            dedo2.position.z = pinzaPosBase + value;
+            dedo1.position.z = - value;
+            dedo2.position.z = value;
         });
     gui.add(myGUI, 'Alambres').name('Alambres')
         .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
