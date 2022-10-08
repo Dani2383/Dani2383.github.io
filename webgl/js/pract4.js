@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('Controles POSICION BIEN');
+    console.log('la pinza');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
