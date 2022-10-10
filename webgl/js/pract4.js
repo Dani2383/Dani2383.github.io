@@ -2,7 +2,7 @@
 
 import * as Three from "../lib/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.140.1/examples/jsm/controls/OrbitControls.js";
-import { TWEEN as Tween} from "../lib/tween.module.min.js";
+import { TWEEN } from "../lib/tween.module.min.js";
 import { GUI } from "../lib/lil-gui.module.min.js";
 import Stats from "../lib/stats.module.js";
 
@@ -12,7 +12,7 @@ let planta;
 // Variables globales
 let robot, cameraControls, L=100, normals = [];
 //Partes del robot:
-let base, brazo, eje, nervios, esparrago, rotula, pinzaPosBase, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot, dedo1, dedo2;
+let base, brazo, eje, nervios, esparrago, rotula, posDedo1, posDedo2, pinza1, pinza2, mano, palma, antebrazo, disco, matRobot, dedo1, dedo2;
 //Acciones
 init();
 loadScene();
@@ -21,7 +21,7 @@ render();
 
 
 function init(){
-    console.log('la pinza');
+    console.log('la pinza3');
     renderer = new Three.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(renderer.domElement);
@@ -108,7 +108,6 @@ function loadScene() {
     pinza1 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza2 = new Three.Mesh(new Three.BoxGeometry(19,20,4), matRobot);
     pinza1.position.z = -10;
-    pinzaPosBase = 10
     pinza2.position.z = 10;
     pinza1.position.x = 14;
     pinza2.position.x = 14;
@@ -165,6 +164,8 @@ function loadScene() {
     dedo1 = new Three.Mesh(malla, matRobot);
     dedo2 = new Three.Mesh(malla, matRobot);
     dedo1.rotation.x = Math.PI;
+    posDedo1 = dedo1.position.z;
+    posDedo2 = dedo2.position.z;
 
 
     mano.add(palma);
@@ -202,6 +203,7 @@ function render() {
     let side = window.innerWidth > window.innerHeight ? 1/4 * window.innerHeight : 1/4 * window.innerWidth;
     renderer.setViewport(0, window.innerHeight-side, side, side);
     renderer.render(scene, planta);
+    TWEEN.update();
 }
 
 function updateAspectRatio()
@@ -235,7 +237,30 @@ function setupGUI(){
         GiroAntebrazoZ: 0,
         GiroPinza: 0,
         SeparacionPinza: 10,
-        Alambres: false
+        Alambres: false,
+        Animate: function(){
+            new TWEEN.Tween(base.rotation)
+                .to({ x: 0, y: [70* Math.PI / 180, -110* Math.PI / 180, 0], z: 0}, 4000)
+                .interpolation(TWEEN.Interpolation.Bezier)
+                .start();
+            new TWEEN.Tween(brazo.rotation)
+                .to({ x: 0, y: 0, z: [50* Math.PI / 180, -40* Math.PI / 180, 0]}, 8000)
+                .interpolation(TWEEN.Interpolation.Linear)
+                .start();
+            new TWEEN.Tween(antebrazo.rotation)
+                .to({ x: 0, y: [30* Math.PI / 180, -30* Math.PI / 180, 0], z: 0}, 4000)
+                .interpolation(TWEEN.Interpolation.Linear)
+                .start();
+
+            new TWEEN.Tween(antebrazo.rotation)
+                .to({ x: 0, y: 0, z: [-60* Math.PI / 180, 60* Math.PI / 180, 0]}, 9000)
+                .interpolation(TWEEN.Interpolation.Linear)
+                .start();
+            new TWEEN.Tween(mano.rotation)
+                .to({ x: 0, y: 0, z: [-20* Math.PI / 180, 180* Math.PI / 180, 0]}, 9000)
+                .interpolation(TWEEN.Interpolation.Linear)
+                .start();
+        }
     }
 
     gui.add(myGUI, 'GiroBase', -180, 180).name('Giro Base')
@@ -252,11 +277,12 @@ function setupGUI(){
         .onChange(value => {
             pinza1.position.z = - value;
             pinza2.position.z = value;
-            dedo1.position.z = - value;
-            dedo2.position.z = value;
+            dedo1.position.z = posDedo1 - value + 10;
+            dedo2.position.z = posDedo2 + value - 10;
         });
     gui.add(myGUI, 'Alambres').name('Alambres')
-        .onChange(value => matRobot = new Three.MeshNormalMaterial({wireframe: value}));
+        .onChange(value => base.material.setValues({wireframe: value}));
+    gui.add(myGUI, 'Animate').name('Animacion');
 
 
 
