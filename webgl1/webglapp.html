@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- Pagina de carga de una aplicacion basica en WebGl -->
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Aplicación basica WebGL</title>
+        <style>
+            body{
+                background-color: white;
+                margin: 0px;
+                overflow: hidden;
+            }
+            canvas {
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body onload="main()">
+        <canvas id="canvas" width="400" height="300"></canvas>
+        <script src="lib/webgl-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script>
+        <script src="js/drawPoints.js"></script>
+    </body>
+</html>

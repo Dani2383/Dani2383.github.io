@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- Pagina de carga de una aplicacion basica en threeJS -->
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Trabajo Final</title>
+        <!-- <link type="text/css" rel="stylesheet" href="main.css"> -->
+		<style>
+            body{
+                background-color: white;
+                margin: 0px;
+                overflow: hidden;
+            }
+            #controls {
+                color:#bfb9b9;
+                background-color: rgba(0,0,0,0.5);
+                font-family: sans-serif;
+                font-size:30px;
+
+                position: absolute;
+                cursor: pointer;
+                padding: 10px;
+                top: 1%;
+                left: 1%;
+
+                box-sizing: border-box;
+                text-align: left;
+                z-index: 1;
+                display: inline;
+		    }
+            #instructions {
+                width: 100%;
+                height: 100%;
+                
+                cursor: pointer;
+                
+                position: absolute;
+                background-color: rgba(69, 64, 64, 0.5);
+
+                display: -webkit-box;
+                display: -moz-box;
+                display: box;
+
+                -webkit-box-pack: center;
+                -moz-box-pack: center;
+                box-pack: center;
+
+                -webkit-box-align: center;
+                -moz-box-align: center;
+                box-align: center;
+
+                color: #a2a2a2;
+                font-family: sans-serif;
+
+            }
+            #remainingTime {
+                color:#ffffff;
+                font-family: 'Segoe UI';
+                font-size:150px;
+                font-weight:bold;
+                position: absolute;
+                bottom: 1%;
+                width: 100%;
+                text-align: center;
+                z-index: 1;
+            }
+            #score {
+                color:#7a075f;
+                font-family: 'Segoe UI';
+                font-size:120px;
+                font-weight:bold;
+                position: absolute;
+                bottom: 1%;
+                right: 5%;
+                width: 25%;
+                text-align: right;
+                z-index: 1;
+            }
+            #endGame {
+                color:#ffffff;
+                font-family: sans-serif;
+                font-size:100px;
+                font-weight:bold;
+                position: absolute;
+                bottom: 55%;
+                right: 0px;
+                width: 100%;
+                text-align: center;
+                z-index: 1; 
+            }
+		</style>
+    </head>
+    <body>
+        <div id="score"></div>
+        <div id="remainingTime"></div>
+        <div id="endGame"></div>
+        <div id="controls">
+            <p>
+            Ratón: Mover la cámara<br/>
+            WASD: Moverse<br/>
+            Click: Disparar<br/>
+            </p>
+        </div>
+        <div id="container">
+            <div id="instructions">
+                <p style="font-size:40px">
+                    HAZ CLICK PARA JUGAR
+                </p>
+            </div>
+        </div>
+        <script async src ="https://unpkg.com/es-module-shims@1.5.18/dist/es-module-shims.js"></script>
+        <script type="importmap">
+            {
+                "imports": { "three": "https://unpkg.com/three@0.140.1/build/three.module.js" }
+            }
+        </script>
+        <script src="../lib/threex.keyboardstate.js"></script>
+        <script type="module" src="./trabajoFinal.js"></script>
+    </body>
+</html>
